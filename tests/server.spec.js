@@ -37,4 +37,13 @@ describe('server/app.js', function() {
       done();
     });
   });
+  it('page says how are you?', (done) => {
+    chai.request(server)
+      .get('/')
+      .end((err, res) => {
+        expect(err).not.exist;
+        expect(JSON.stringify(res.text)).to.contain('how are you?');
+        done();
+      });
+    });
 })
